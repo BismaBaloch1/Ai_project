@@ -2,7 +2,7 @@
 HexAI is a strategic AI-based implementation of the classic board game Hex, allowing gameplay between human players and artificial intelligence agents. The AI supports multiple strategies including Minimax with Alpha-Beta Pruning, Monte Carlo Tree Search (MCTS), and Reinforcement Learning. This project was developed as part of an academic exploration into advanced AI decision-making for deterministic, zero-sum board games.
 
 
-##Built By
+## Built By
 
 Bisma and Sadia
 
@@ -49,7 +49,7 @@ python hexai.py
 example
 python hexai.py -p1 alphabeta -p2 mcts -s 5 -t -b 2
 
-##Experiments: 
+## Experiments: 
 Run experiments to compare different AI strategies and heuristics:
 
 1. Alpha-Beta with/without Heuristics
@@ -75,7 +75,7 @@ Reinforcement Learning (optional): Allows AI to improve over time via self-play.
 
 Heuristics: Includes influence maps, shortest path evaluations (Dijkstra), and positional scoring.
 
-T## echnologies Used
+## Technologies Used
 
 Language: Python
 
