@@ -1,83 +1,93 @@
-# Ai_project
-HexAI is a strategic AI-based implementation of the classic board game Hex, allowing gameplay between human players and artificial intelligence agents. The AI supports multiple strategies including Minimax with Alpha-Beta Pruning, Monte Carlo Tree Search (MCTS), and Reinforcement Learning. This project was developed as part of an academic exploration into advanced AI decision-making for deterministic, zero-sum board games.
+# HexAIpy
 
-
-## Built By
-
-Bisma and Sadia
-
-Course: AI
-
-Instructor: Alishba Subhani
-
-Submission Date: October 3, 2025
-
-## Features
- 
-✅ Play against human or AI opponents.
-
-🤖 Choose between Minimax, Alpha-Beta, or MCTS AI.
-
-♟ Configurable board size.
-
-🧠 AI difficulty scaling via heuristics and self-learning.
-
-🚀 Optimized decision-making using transposition tables.
-
-📊 Built-in tools for running performance experiments.
+Play Hex by yourself or against AI!
 
 ## Installation
-Clone the repository and install dependencies using:
 
+Install dependencies easily using:
+
+```bash
 pip install -r requirements.txt
+```
 
-## How to Play
-Run the main script:
+## How to run?
 
+You can run the main program where you can play Hex against another (local) player or an AI using the following command:
+
+```bash
 python hexai.py
+```
 
-## 🎮 Optional Flags
+Optionally you can add the following flags:
 
-| Option         | Action                        | Choices                      | Default |
-|----------------|-------------------------------|-------------------------------|---------|
-| `-p1`          | Player 1 (Blue) type          | `{human, alphabeta, mcts}`   | `human` |
-| `-p2`          | Player 2 (Red) type           | `{human, alphabeta, mcts}`   | `mcts`  |
-| `-s`, `--size` | Set board size                | `int`                         | `4`     |
-| `-t`, `--use_tt` | Use transposition table     | `bool`                        | `False` |
-| `-b`, `--begin`| Which player starts (1 or 2)  | `1 = Blue`, `2 = Red`         | `1`     |
+|Option | Action | Choices | Default |
+| --- | --- | --- | --- |
+| -p1 | Choose Player 1 (Blue) type | {human, alphabeta, mcts} | human |
+| -p2 | Choose Player 2 (Red) type | {human, alphabeta, mcts} | mcts |
+| -s, --size | Specify board size | int | 4 |
+| -t, --use_tt | Use transposition table | bool | False |
+| -b, --begin | Which player starts the game (1/2) | int | 1 |
 
-example
-python hexai.py -p1 alphabeta -p2 mcts -s 5 -t -b 2
+You can place Hex pieces by typing the coordinate when prompted. The coordinate should be contain a letter and a number to indicate the column and row (e.g., b3).
 
-## Experiments: 
-Run experiments to compare different AI strategies and heuristics:
+## Experiments
 
-1. Alpha-Beta with/without Heuristics
+The accompanying report contains various experiments that were performed on the different AI variants. To perform the experiments yourself, use the `hexexperiments.py` file.
 
+The following experiments have been performed:
+
+### Alpha-Beta Comparison
+
+Compares AB with a random evaluation function against AB's with the Dijkstra evaluation function: 
+
+```
 python hexexperiments.py comp -o base -m
+```
 
-2. Iterative Deepening + Transposition Table
+### Iterative Deepening + Tranposition Table Comparison
 
-   python hexexperiments.py comp -o idtt -m
+Compares the IDTT agent against base AB agents:
 
-3.MCTS Optimization
+```
+python hexexperiments.py comp -o idtt -m
+```
 
+### Monte-Carlo Tree Search Optimisation
+
+Compares different MCTS agents to find the optimal parameter settings
+
+```
 python hexexperiments.py mcts
+```
 
- ## AI Techniques Used
-Minimax Algorithm: Standard decision-making for 2-player adversarial games.
+This experiment takes about 17 minutes to complete on a 12-core AMD Ryzen 5900x processor. The processing time can be decreased by changing the values in the `n_options` and `cp_options` arrays or by lowering the number of matches played by using the `-n` flag.
 
-Alpha-Beta Pruning: Efficiently reduces the search space in Minimax.
+### Monte-Carlo Tree Search Comparison
 
-Monte Carlo Tree Search (MCTS): Uses simulation-based strategies for move evaluation.
+Compares the best MCTS agent against the IDTT agent
 
-Reinforcement Learning (optional): Allows AI to improve over time via self-play.
+```
+python hexexperiments.py comp -o mcts -m
+```
 
-Heuristics: Includes influence maps, shortest path evaluations (Dijkstra), and positional scoring.
+### (More statistics)
 
-## Technologies Used
+The `exp_competition_old.py` file contains a singlethreaded implementation of the experiments returning some more statistics. You can run it using:
 
-Language: Python
+```
+python hexexperiments.py comp_old
+```
 
-Libraries: NumPy, Pygame, Scikit-learn, TensorFlow/PyTorch (for RL)
+Warning: These experiments can take a long time as only a single thread is used!
 
+### Other Experiment Flags
+
+To play around more with the experiments, you can change the following flags:
+
+|Option | Action | Choices | Default |
+| --- | --- | --- | --- |
+| \<test\> | Experiment type | {comp, comp_multi, mcts} | - |
+| -o, --option | What agents are tested when using comp / comp_multi | {base, idtt, mcts} | base |
+| -s, --size | Specify board size | int | 5 |
+| -n, --no_matches | Manually specify number of matches | int | None |
+| -m, --start_moves | Use predefined start moves | bool | False |
