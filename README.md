@@ -12,3 +12,16 @@ Instructor: Alishba Subhani
 
 Submission Date: October 3, 2025
 
+ Features
+ 
+✅ Play against human or AI opponents.
+
+🤖 Choose between Minimax, Alpha-Beta, or MCTS AI.
+
+♟ Configurable board size.
+
+🧠 AI difficulty scaling via heuristics and self-learning.
+
+🚀 Optimized decision-making using transposition tables.
+
+📊 Built-in tools for running performance experiments.
