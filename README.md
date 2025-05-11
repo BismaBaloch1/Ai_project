@@ -3,8 +3,12 @@ HexAI is a strategic AI-based implementation of the classic board game Hex, allo
 
 
 Built By
+
 Bisma and Sadia
+
 Course: AI
+
 Instructor: Alishba Subhani
+
 Submission Date: October 3, 2025
 
